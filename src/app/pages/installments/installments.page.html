@@ -1,0 +1,142 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar mode="ios" class="py-2 px-2  header">
+
+    <!-- <ion-searchbar  slot="end" style="text-align: left;" class="searchbar" type="animated"></ion-searchbar> -->
+<!-- 
+    <ion-button style="margin-left: -26px;"
+     fill="clear" color="light" (click)="home()" class="backinstallment">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+      Back
+    </ion-button> -->
+
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-icon class="buttonrefresh" name="menu-outline"></ion-icon>
+      </ion-menu-toggle>
+    </ion-buttons>
+
+    <ion-title class="pagetitle">
+     Add Installments
+    </ion-title> 
+  
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <!-- <ion-list class="listheader3" style="margin-top: 10px;">
+    <div class="">
+      <ion-row>
+        <ion-col size-lg="10.9" size-md="10" size="12" class="colhome">
+          <div class="me-auto  d-lg-block">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active text1 "(click)="home()">Home</li>
+              <li class="breadcrumb-item li1 page"><b>Add Installment</b></li>
+            </ol>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-list> -->
+
+  <div>
+    <ion-list class="selectlist"> 
+      <ion-row>
+        <ion-col>
+       <ng-select bindLabel="name"
+        placeholder="Select Student" 
+        appendTo="body"
+        [searchable]="true" 
+          (change)="select_student($event)">
+        <ng-option  *ngFor="let allStudent of All_Students" value="{{allStudent.id}}">
+          {{allStudent.id}}/
+          {{allStudent.name}}
+          {{allStudent.f_name }}
+        </ng-option>
+        </ng-select> 
+     
+      </ion-col>
+    </ion-row>
+    </ion-list>
+  </div> 
+
+  <div *ngIf="show">
+    <ion-list>
+    <ion-card style="border-radius: 8px;">
+      <ion-row>
+        <ion-col size-lg="4" size-md="4" size="12">
+          <ion-label>Student Name</ion-label>
+          <p class="text2">{{student_details.name}} </p>
+        </ion-col>
+  
+        <ion-col size-lg="4" size-md="4" size="12">
+          <ion-label>Father's Name</ion-label>
+          <p class="text2">{{student_details.f_name}} </p>
+        </ion-col>
+        <ion-col size-lg="4" size-md="4"  size="12">
+          <ion-label>Contact No</ion-label>
+          <p  class="text2">{{student_details.contact_no}}</p>
+        </ion-col>
+        <ion-col size-lg="4" size-md="4"  size="12">
+          <ion-label>Course Duration</ion-label>
+          <p  class="text2">{{student_details.c_duration}}</p>
+        </ion-col>
+        <ion-col size-lg="4" size-md="4"  size="12">
+          <ion-label>Total Fee</ion-label>
+          <p  class="text2">{{student_details.total_fee}}</p>
+        </ion-col>
+        <!-- <ion-col size-lg="4" size-md="4"  size="12">
+          <ion-label>Remaining Fee</ion-label>
+          <p  class="text2">{{student_details.remaning_amount}}</p>
+        </ion-col> -->  
+        <ion-col size-lg="4" size-md="4"  size="12">
+          <ion-label>Course</ion-label>
+          <p  class="text2">{{student_details.course}}</p>
+        </ion-col>
+        <ion-col size-lg="4" size-md="4"  size="12">
+          <ion-label>Total Installments</ion-label>
+          <p  class="text2">{{student_details.total_installments}}</p>
+        </ion-col>
+        <ion-col size-lg="4" size-md="4"  size="12">
+          <ion-label>Installments Amount</ion-label>
+          <p  class="text2">{{student_details.installment_amount}}</p>
+        </ion-col>
+      </ion-row>
+      <!-- <p style="text-align: center;" (click)="view_all_installment(student_details)" ><span class="color_primary"><ion-button class="button2">View</ion-button> </span> </p> -->
+    </ion-card>
+  </ion-list>
+  </div>
+  <ion-card class="card2"style="border-radius: 8px;">
+    <ion-row >
+      <div class="d-flex">
+      <h5 class="m-3">Current Installment no:</h5>
+      <h5 class="m-3 ms-1">{{this.student_details.installment_no}}</h5>
+      </div>
+    </ion-row>
+    <!-- <ion-row >
+      <div class="d-flex">
+      <h5 class="m-3 text2">Pay Installment </h5>
+      <h5 class="m-3 ms-1"></h5>
+      </div>
+    </ion-row> -->
+    <div class="row d-flex justify-content-center align-items-center ion-margin">
+      <div class="col-lg-5 mb-2">
+        <div class="form-group">
+          <label class="text-label text2 label1">Installment Amount</label>
+          <ion-input type="number" [(ngModel)]="this.student_details.installment_amount"  fill="outline" required placeholder="Enter Amount"></ion-input>
+        </div>
+      </div> 
+    
+      <div class="col-lg-5 mb-2"> 
+     
+        <ion-button class="buton1" expand="block" color="tertiary"  (click)="Add_Installments()" 
+        [disabled]="!student_details.installment_amount  " >
+          Pay Now
+        </ion-button>
+      </div>
+    </div>
+  
+  </ion-card>
+  
+
+
+</ion-content>

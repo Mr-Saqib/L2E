@@ -1,0 +1,124 @@
+ng-select{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0px;
+    padding: 15px;
+}
+.selectlist{
+    margin: 20px;
+    height: 70px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+} 
+.selectlist2{
+    margin: 14px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+} 
+ .pendingg{
+    color: white;
+    background-color:  rgba(24, 24, 231, 0.842);
+    border-radius: 5px;
+    text-align: center;
+    padding: 2px;
+}
+.deactive{
+    color: white;
+    background-color:  rgba(248, 18, 18, 0.842);
+    border-radius: 5px;
+    text-align: center;
+    padding: 2px;
+}
+.cancell{
+    color: white;
+    background-color: rgba(130, 235, 26, 0.774);
+    border-radius: 5px;
+    text-align: center;
+    padding: 2px;
+}
+.complete{
+    color: white;
+    background-color: rgba(38, 214, 22, 0.788);
+    border-radius: 5px;
+    text-align: center;
+    padding: 2px;
+}
+.successfulll{
+    color: white;
+    background-color: rgba(134, 250, 40, 0.788);
+    border-radius: 5px;
+    text-align: center;
+    padding: 2px;
+}
+.laeves{
+    color: white;
+    background-color: gray;
+    border-radius: 5px;
+    text-align: center;
+    padding: 2px;
+}
+th{
+    font-family: 'poppins', sans-serif;
+}
+td{
+    font-family: 'poppins', sans-serif;
+}
+.listsee{
+    height: 10px;
+}
+.icon{
+    font-size: 19px;
+}
+// card
+// .lsittotal{
+
+// }
+.form-head {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    height: 103px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.card-body{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@media (min-width:1px) and (max-width:768px) {
+    ion-item{
+        margin-left: auto;
+        margin-right: auto;
+        --border-radius: 10px;
+        padding: 10px;
+    }
+}
+@media (min-width:769px){
+    ion-item{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        --border-radius: 10px;
+        padding: 10px;
+    }
+}
+.backbtn{
+    margin-left: 10px;
+}
+.center-placeholder {
+    display: flex;
+   margin-left: 15px;
+  }
+  
+  .button1{
+    width: 120px;
+    height: 45px;
+    margin-left: 20px;
+    --border-radius: 10px;
+ 
+  }
+  .list{
+    text-align: center;
+  background-color: transparent;
+  }

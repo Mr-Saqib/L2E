@@ -1,0 +1,576 @@
+
+<ion-header class="ion-no-border">
+  <ion-toolbar mode="ios" class="py-2 px-2  header">
+    <!-- <ion-button (click)="home()"
+    style="margin-left: -80px;" fill="clear" color="light"   class="backbtn">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+      Back
+    </ion-button> -->
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-icon class="buttonrefresh" name="menu-outline"></ion-icon>
+      </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title>
+      Add Team
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+    <ion-segment  class="segment"
+    color="dark" mode="md" [(ngModel)]="changesegment">
+      <ion-segment-button value="Team">
+        <ion-icon name="add"></ion-icon>
+        <ion-label>Team</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Expense">
+        <ion-icon name="add"></ion-icon>
+        <ion-label>Expense</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+ 
+
+<ion-content>
+
+
+  <div *ngIf="this.changesegment == 'Team'">
+
+    <ion-row>
+      <ion-col size-xs="12" size-md="4">
+        <ion-card class="c3">
+          <ion-card-title class="t2">Rs.{{this.teamBill.total_netbalance}}</ion-card-title>
+          <ion-card-subtitle class="st1">Net Balance</ion-card-subtitle>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size-xs="12" size-md="4">
+        <ion-card class="c3">
+          <ion-card-title class="t2">Rs.{{this.teamBill.total_credit}}</ion-card-title>
+          <ion-card-subtitle class="st1">Credit Balance</ion-card-subtitle>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size-xs="12" size-md="4">
+        <ion-card class="c3">
+          <ion-card-title class="t2">Rs.{{this.teamBill.total_debit}}</ion-card-title>
+          <ion-card-subtitle class="st1">Debit Balance</ion-card-subtitle>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top:30px;">
+
+      <ion-col size="12" size-md="5"  >
+        <ion-item lines="none" style="width: 100%; --border-radius: 10px;">
+          <input type="month" class="form-control" (ionChange)="get_installmentbymoont($event)" />
+        </ion-item>
+      </ion-col>
+      <ion-col size-md="4"  >
+        <ion-button style="margin-left:20px;--border-radius: 5px;" (click)="filterdata()">Filter
+          <ion-icon name="filter-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size-md="3"  >
+          <ion-button style="width: 120px;position: absolute;right: 17px;--border-radius:5px;"
+            (click)="setOpen(true , data)">
+            Add <ion-icon name="add"></ion-icon>
+          </ion-button>
+      </ion-col>
+      
+    </ion-row>
+    <ion-card style="border-radius: 8px;" class="card-body">
+
+      <div class="card-body ion-align-items-end" style="text-align: center;">
+        <div class="table-responsive" style="margin-top:2px;">
+          <table class="table table-bordered align-middle nowrap">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Father Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Contact No</th>
+                <th scope="col">Address</th>
+                <th scope="col">Cnic</th>
+                <th scope="col" style="text-align: left;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of team_details ;let i=index;">
+                <th scope="row">{{i+1}} </th>
+                <td>{{data.name}}</td>
+                <td>{{data.f_name}}</td>
+                <td>{{data.gender}}</td>
+                <td>{{data.contact_no}}</td>
+                <!-- <td> <p [ngClass]="{'cancell':data.st_status === 'active','successfulll':data.st_status === 'deactive','laeves':data.st_status === 'leave','pendingg':data.st_status === 'Cancel'}"style="margin:0px;"> {{data.st_status}}</p></td>       
+                        <td><p [ngClass]="{'pendingg':data.status === 'pending','cancell':data.status === 'confirim','successfulll':data.status === 'Successfull'}"style="margin:0px;">{{data.status}}</p></td>        -->
+                <td>{{data.address}}</td>
+                <td>{{data.cinic}}</td>
+
+                <td>
+                  <ul class="list-unstyled hstack gap-1 mb-0">
+                    <!-- <li printSectionId="demo" ngxPrint >
+                                <a  class="btn btn-sm btn-soft-primary"><ion-icon class="icon" name="eye-outline"></ion-icon></a>
+                            </li> -->
+                    <li (click)="detailteam(data)">
+                      <a class="btn btn-sm btn-soft-primary"><ion-icon class="icon" name="eye-outline"></ion-icon></a>
+                    </li>
+                    <li (click)="setOpentrans(true , data)">
+                      <a class="btn btn-sm btn-soft-primary"><ion-icon class="icon" name="cash-outline"></ion-icon></a>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ion-card>
+    <!-- Model open add Member data -->
+    <ion-modal [isOpen]="isModalOpen" [backdropDismiss]="false" mode="ios">
+      <ng-template>
+
+        <ion-content class="ion-padding" mode="ios">
+
+          <ion-buttons>
+            <ion-button (click)="setClose(false)"><ion-icon name="close-outline"></ion-icon></ion-button>
+          </ion-buttons>
+          <ion-row>
+            <ion-card-title class="t1" mode="ios">Team Member</ion-card-title>
+          </ion-row>
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="label1">Name</label>
+              <ion-input type="text" [(ngModel)]="custdetail.name" class="form-control" placeholder="Enter name"
+                required></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="text-label label1">Gender</label>
+              <ion-select [(ngModel)]="custdetail.gender" mode="ios" interface="action-sheet"
+                placeholder="Select Gender">
+                <ion-select-option value="Male">Male</ion-select-option>
+                <ion-select-option value="Female">Female</ion-select-option>
+              </ion-select>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="label1">Father Name</label>
+              <ion-input type="text" [(ngModel)]="custdetail.f_name" class="form-control"
+                placeholder="Enter father name" required></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="label1">Contact number</label>
+              <ion-input type="number" [(ngModel)]="custdetail.contact_no" class="form-control"
+                placeholder="Enter contact number" required></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="label1">Address</label>
+              <ion-input type="text" [(ngModel)]="custdetail.address" class="form-control" placeholder="Enter address"
+                required></ion-input>
+            </div>
+          </ion-col>
+
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="label1">CNIC</label>
+              <ion-input type="number" [(ngModel)]="custdetail.cinic" class="form-control" placeholder="Enter cnic"
+                required></ion-input>
+            </div>
+          </ion-col>
+
+          <ion-row>
+
+
+
+
+
+
+
+            <!-- <ion-button (click)="Close(false)" class="add-button" fill="clear" mode="ios">Add Member</ion-button> -->
+
+            <ion-button  (click)="Close(false)" style="width: 120px;--border-radius:10px;margin: auto;height: 40px;" 
+            [disabled]="custdetail.name ==='' || 
+            custdetail.gender ==='' || custdetail.f_name ==='' || 
+            custdetail.contact_no ==='' || custdetail.address ==='' || custdetail.cinic ===''" >Add Member</ion-button>
+          </ion-row>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <!-- Model use for transaction -->
+    <ion-modal [isOpen]="isModalOpenmodeltr" [backdropDismiss]="false" mode="ios">
+      <ng-template>
+
+        <ion-content class="ion-padding" mode="ios">
+
+          <ion-buttons>
+            <ion-button (click)="setCloseModel(false)"><ion-icon name="close-outline"></ion-icon></ion-button>
+          </ion-buttons>
+          <ion-row>
+            <ion-card-title class="t1" mode="ios">Team Member</ion-card-title>
+          </ion-row>
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="label1">Debit</label>
+              <ion-input type="number" [(ngModel)]="account.debit" class="form-control" placeholder="Enter Debit"
+                required></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="label1">Credit</label>
+              <ion-input type="number" [(ngModel)]="account.credit" class="form-control" placeholder="Enter Credit"
+                required></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="label1">Description</label>
+              <ion-input type="text" [(ngModel)]="account.description" class="form-control"
+                placeholder="Enter Description" required></ion-input>
+            </div>
+          </ion-col>
+
+          <ion-row>
+            <!-- <ion-button (click)="addtransaction(false)" class="addtransaction" fill="clear"
+              mode="ios">Submit</ion-button> -->
+              <ion-button  (click)="addtransaction(false)" style="width: 120px;--border-radius:10px;margin: auto;height: 40px;" 
+              [disabled]="account.debit ==='' || 
+              account.credit ==='' ||account.description ==='' "
+              >Submit</ion-button>
+
+          </ion-row>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </div>
+
+
+  <div *ngIf="this.changesegment == 'Expense'">
+
+    <!-- <ion-card>
+   
+      </ion-card> -->
+    <ion-row>
+      <ion-col size-xs="12" size-md="4">
+        <ion-card class="c3">
+          <ion-card-title class="t2">Rs.{{this.totalExpenseAmount}}</ion-card-title>
+          <ion-card-subtitle class="st1">Total Expense</ion-card-subtitle>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+      <ion-row style="margin-top:30px;">
+        <ion-col size="12" size-md="5" >
+          <ion-item lines="none" style="width: 100%; --border-radius: 10px;">
+            <input type="month" class="form-control" (ionChange)="get_installmentbymoont($event)" />
+          </ion-item>
+        </ion-col>
+      <ion-col size-md="3">
+        <ion-button style="margin-left: 20px;--border-radius: 5px;" (click)="expenseamountfilter()">Filter
+          <ion-icon name="filter-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size-md="3">
+        <ion-button style="width: 120px;position: absolute;right: 17px;--border-radius:5px"
+        (click)="setExpenseOpen(true)">
+        Submit 
+        </ion-button>
+      </ion-col>
+     
+    </ion-row>
+    <ion-card style="border-radius: 8px;" class="card-body">
+      <div class="card-body">
+
+        <div class="table-responsive" style="margin-top:2px;">
+          <table class="table table-bordered align-middle nowrap">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of allexpenses ;let i=index;">
+                <th scope="row">{{i+1}} </th>
+                <td>{{data.name}}</td>
+
+                <td>
+                  <ul class="list-unstyled hstack gap-1 mb-0">
+                    <!-- <li printSectionId="demo" ngxPrint >
+                                <a  class="btn btn-sm btn-soft-primary"><ion-icon class="icon" name="eye-outline"></ion-icon></a>
+                            </li> -->
+                    <li (click)="setseeExpensedetailOpen(true , data)">
+                      <a class="btn btn-sm btn-soft-primary"><ion-icon class="icon" name="eye-outline"></ion-icon></a>
+                    </li>
+                    <li (click)="setExpensedetailOpen(true , data)">
+                      <a class="btn btn-sm btn-soft-primary"><ion-icon class="icon" name="cash-outline"></ion-icon></a>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ion-card>
+    <!-- Model open add Member data -->
+    <ion-modal [isOpen]="isOpenExpenseModal" [backdropDismiss]="false" mode="ios">
+      <ng-template>
+
+        <ion-content class="ion-padding" mode="ios">
+
+          <ion-buttons>
+            <ion-button (click)="setExpenseOpen(false)"><ion-icon name="close-outline"></ion-icon></ion-button>
+          </ion-buttons>
+          <ion-row>
+            <ion-card-title class="t1" mode="ios">Add Expense</ion-card-title>
+          </ion-row>
+          <ion-col size="12">
+            <div class="mb-2 form-group">
+              <label class="label1">Name</label>
+              <ion-input type="text" [(ngModel)]="this.expenses.name" class="form-control" placeholder="Expense name"
+                required></ion-input>
+            </div>
+          </ion-col>
+          <ion-row>
+            <!-- <ion-button (click)="insertexpense(false)" class="add-button" color="tertiary" expand="block">Add
+              Expense</ion-button> -->
+            
+              <ion-button  (click)="insertexpense(false)"     style="width: 120px;--border-radius:10px;margin: auto;height: 40px;" 
+              [disabled]="expenses.name ===''  "
+              >Add Expense</ion-button>
+
+          </ion-row>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <!-- Model use for transaction -->
+    <ion-modal [isOpen]="isOpenExpensedetailModal" [backdropDismiss]="false" mode="ios">
+      <ng-template>
+
+        <ion-content class="ion-padding" mode="ios">
+
+          <ion-buttons>
+            <ion-button (click)="setExpensedetailclose(false)"><ion-icon name="close-outline"></ion-icon></ion-button>
+          </ion-buttons>
+          <ion-row>
+            <ion-card-title class="t1" mode="ios">Add <span
+                style="color: red; text-transform: uppercase;">{{this.expensename}}</span> Details</ion-card-title>
+          </ion-row>
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="label1">Date</label>
+              <ion-input type="date" [(ngModel)]="expensedetail.date" class="form-control" placeholder="Select Date"
+                required></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="label1">Amount</label>
+              <ion-input type="number" [(ngModel)]="expensedetail.amount" class="form-control"
+                placeholder="Enter Amount" required></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="mb-2 form-group">
+              <label class="label1">Description</label>
+              <ion-input type="text" [(ngModel)]="expensedetail.description" class="form-control"
+                placeholder="Enter Description" required></ion-input>
+            </div>
+          </ion-col>
+
+          <ion-row>
+            <!-- <ion-button (click)="insertexpensedetail(false)" class="addtransaction" color="tertiary"
+              mode="ios">Submit</ion-button> -->
+              <ion-button (click)="insertexpensedetail(false)" style="width: 120px;--border-radius:10px;margin: auto;height: 40px;" 
+              [disabled]="expensedetail.date ==='' || 
+              expensedetail.amount ==='' ||expensedetail.description ===''  "
+             
+              >Submit</ion-button>
+
+          </ion-row>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+    <ion-modal [isOpen]="isOpenseeExpensedetailModal" [backdropDismiss]="false" mode="ios">
+      <ng-template>
+
+        <ion-content class="ion-padding" mode="ios">
+
+          <ion-buttons>
+            <ion-button (click)="setseeExpensedetailclose(false)"><ion-icon
+                name="close-outline"></ion-icon></ion-button>
+          </ion-buttons>
+          <ion-row>
+            <ion-card-title class="t1" mode="ios"><span
+                style="color: red; text-transform: uppercase;">{{this.expensename}}</span> Details</ion-card-title>
+          </ion-row>
+          <ion-card class="detailcard">
+            <ion-card-header>
+              <ion-title>Total: {{this.totalexpense.total_debit}}</ion-title>
+            </ion-card-header>
+            <div class="table-responsive">
+              <table class="table table-bordered align-middle nowrap">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of allexpensedetail ;let i=index;">
+                    <th scope="row">{{i+1}} </th>
+                    <td>{{data.description}}</td>
+                    <td>{{data.date}}</td>
+                    <td>{{data.amount}}</td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </ion-card>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+  </div>
+
+</ion-content>
+<!-- Model open add Member data -->
+<ion-modal [isOpen]="isModalOpen" [backdropDismiss]="false" mode="ios">
+  <ng-template>
+
+    <ion-content class="ion-padding" mode="ios">
+
+      <ion-buttons>
+        <ion-button (click)="setClose(false)"><ion-icon name="close-outline"></ion-icon></ion-button>
+      </ion-buttons>
+      <ion-row>
+        <ion-card-title class="t1" mode="ios">Team Member</ion-card-title>
+      </ion-row>
+      <ion-col size="6">
+        <div class="mb-2 form-group">
+          <label class="label1">Name</label>
+          <ion-input type="text" [(ngModel)]="custdetail.name" class="form-control" placeholder="Enter name"
+            required></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="mb-2 form-group">
+          <label class="text-label label1">Gender</label>
+          <ion-select [(ngModel)]="custdetail.gender" mode="ios" interface="action-sheet" placeholder="Select Gender">
+            <ion-select-option value="Male">Male</ion-select-option>
+            <ion-select-option value="Female">Female</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="mb-2 form-group">
+          <label class="label1">Father Name</label>
+          <ion-input type="text" [(ngModel)]="custdetail.f_name" class="form-control" placeholder="Enter father name"
+            required></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="mb-2 form-group">
+          <label class="label1">Contact number</label>
+          <ion-input type="number" [(ngModel)]="custdetail.contact_no" class="form-control"
+            placeholder="Enter contact number" required></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="mb-2 form-group">
+          <label class="label1">Address</label>
+          <ion-input type="text" [(ngModel)]="custdetail.address" class="form-control" placeholder="Enter address"
+            required></ion-input>
+        </div>
+      </ion-col>
+
+      <ion-col size="6">
+        <div class="mb-2 form-group">
+          <label class="label1">CNIC</label>
+          <ion-input type="number" [(ngModel)]="custdetail.cinic" class="form-control" placeholder="Enter cnic"
+            required></ion-input>
+        </div>
+      </ion-col>
+
+      <ion-row>
+
+
+
+
+
+
+
+    <!-- <ion-button (click)="Close(false)" class="addtransaction" color="tertiary">Add Member</ion-button> -->
+       
+        
+
+      </ion-row>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- Model use for transaction -->
+<ion-modal [isOpen]="isModalOpenmodeltr" [backdropDismiss]="false" mode="ios">
+  <ng-template>
+
+    <ion-content class="ion-padding" mode="ios">
+
+      <ion-buttons>
+        <ion-button (click)="setCloseModel(false)"><ion-icon name="close-outline"></ion-icon></ion-button>
+      </ion-buttons>
+      <ion-row>
+        <ion-card-title class="t1" mode="ios">Team Member</ion-card-title>
+      </ion-row>
+      <ion-col size="6">
+        <div class="mb-2 form-group">
+          <label class="label1">Debit</label>
+          <ion-input type="number" [(ngModel)]="account.debit" class="form-control" placeholder="Enter name"
+            required></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="mb-2 form-group">
+          <label class="label1">Credit</label>
+          <ion-input type="number" [(ngModel)]="account.credit" class="form-control" placeholder="Enter name"
+            required></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="mb-2 form-group">
+          <label class="label1">Description</label>
+          <ion-input type="text" [(ngModel)]="account.description" class="form-control" placeholder="Enter father name"
+            required></ion-input>
+        </div>
+      </ion-col>
+
+      <ion-row>
+
+
+
+
+
+
+
+        <ion-button (click)="addtransaction(false)" class="addtransaction" color="tertiary">Submit</ion-button>
+
+
+
+
+        
+      </ion-row>
+    
+    </ion-content>
+  </ng-template>
+</ion-modal>

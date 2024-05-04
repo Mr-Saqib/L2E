@@ -1,0 +1,91 @@
+
+.cancell{
+    color: white;
+    background-color: red;
+    border-radius: 5px;
+    text-align: center;
+}
+.form-control{
+    height: 45px;
+    margin-left: 6px;
+    width: 100%;
+    border: none;
+  }
+  .with{
+    width: 100%;
+  }
+  .button1{
+    width: 120px;
+    height: 45px;
+    margin-left: 20px;
+    --border-radius: 10px;
+    
+  }
+  .list{
+    text-align: center;
+  background-color: transparent;
+  }
+.successfulll{
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+    text-align: center;
+}
+th{
+    font-family: 'poppins', sans-serif;
+}
+td{
+    font-family: 'poppins', sans-serif;
+}
+.listsee{
+    height: 10px;
+}
+.icon{
+    font-size: 19px;
+}
+
+.form-head {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    height:103px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+// selector
+.selectlist{
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+@media (min-width:1px) and (max-width:768px) {
+    ion-item{
+        margin-left: auto;
+        margin-right: auto;
+        --border-radius: 10px;
+        padding: 10px;
+    }
+}
+@media (min-width:769px){
+    ion-item{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        --border-radius: 10px;
+        padding: 10px;
+    }
+}
+.pendingg{
+    color: white;
+    background: rgba(38, 214, 22, 0.788);
+    
+}
+.complete{
+    color: white;
+    background: blue;
+    
+}
+.backbtn{
+    margin-left: -15px;
+}

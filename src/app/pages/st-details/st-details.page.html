@@ -1,0 +1,219 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar mode="ios" class="py-2 px-2  header">
+
+    <ion-searchbar slot="end" style="text-align: left;" class="searchbar" [(ngModel)]="filterTerm"
+      (ngModelChange)="searchItems(filterTerm)" type="animated"></ion-searchbar>
+    <!-- 
+    <ion-button
+    style="margin-left: -50px;" fill="clear" color="light" (click)="home()" class="backbtn">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+      Back
+    </ion-button> -->
+
+
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-icon class="buttonrefresh" name="menu-outline"></ion-icon>
+      </ion-menu-toggle>
+    </ion-buttons>
+
+    <ion-title class="pagetitle">
+      See Students
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-list class="listheader2" style="margin-top: 10px;">
+    <div class="">
+      <ion-row> -->
+  <!-- <ion-col size-lg="10.9" size-md="10" size="12" class="colhome">
+          <div class="me-auto  d-lg-block">
+           
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active text1 " (click)="home()">Home</li>
+              <li class="breadcrumb-item li1 page"><b>See Students</b></li>
+             
+            </ol>
+          </div>
+        </ion-col> -->
+  <!-- <ion-col size-lg="1" size-md="1.7" size="" (click)="refresh()">
+          <ion-button  style="width: 120px;position: absolute;right: 17px;--border-radius:5px;margin-top: 9px;" *ngIf="!refresher">
+            Refresh
+          </ion-button>
+          <ion-spinner color="tertiary" name="circles" *ngIf="refresher"
+            style="margin-top: 10px;margin-left:10px;"></ion-spinner>
+        </ion-col> -->
+  <!-- </ion-row>
+    </div>
+  </ion-list> -->
+
+  <ion-row>
+    <ion-col size-md="3" size="12">
+      <div class="form-head ion-margin ">
+        <div class="me-auto w-100">
+          <div class="d-flex flex-column">
+            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">{{this.total.length}}</h2>
+            <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">Total Students</h2>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col size-md="3" size="12">
+      <div class="form-head ion-margin ">
+        <div class="me-auto w-100">
+          <div class="d-flex flex-column">
+            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">{{this.activeCounter}}</h2>
+            <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">Active Students</h2>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col size-md="3" size="12">
+      <div class="form-head ion-margin ">
+        <div class="me-auto w-100">
+          <div class="d-flex flex-column">
+            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">{{this.deactiveCounter}}</h2>
+            <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">DeActive</h2>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col size-md="3" size="12">
+      <div class="form-head ion-margin ">
+        <div class="me-auto w-100">
+          <div class="d-flex flex-column">
+            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">{{this.leaveCounter}}</h2>
+            <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">Leave</h2>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+    <!-- <ion-col size-md="12" size="12" size-lg="12" *ngIf="c_id == 3">
+      <div class="form-head ion-margin ">
+        <div class="me-auto w-100">
+          <div class="d-flex flex-column">
+            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">{{this.campus_students}}</h2>
+            <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">Total Students by Campus</h2>
+          </div>
+        </div>
+      </div>
+    </ion-col> -->
+  </ion-row>
+
+  <!-- <ion-item  lines="none" style="width: 50%;margin: auto;">
+    <ion-list style="height: 60px;">
+      <ion-input type="text" mode="ios"  placeholder="Search By name" [(ngModel)]="filterTerm" (ngModelChange)="searchItems(filterTerm)"></ion-input>
+      </ion-list>
+  </ion-item> -->
+
+  <!-- <ion-list *ngIf="c_id == 3" class="selectlist">
+    <ion-item lines="none">
+      <ion-select mode="ios" (ionChange)="select_campus($event)" placeholder="Select Campus">
+        <ion-select-option value="all">All</ion-select-option>
+        <ion-select-option value="1">Pakpattan</ion-select-option>
+        <ion-select-option value="2">Arifwala</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-row>
+    <ion-col size="1"></ion-col>
+    <ion-col size="12" size-md="5">
+      <!-- <ion-list class="selectlist"> -->
+        <ion-item lines="none">
+          <ion-select aria-label="Student" interface="action-sheet" placeholder="Select Type" mode="ios"
+            (ionChange)="select_student_Course($event)">
+
+            <ion-select-option value="Full Stack Development">Full Stack Development</ion-select-option>
+            <ion-select-option value="Graphic Designing">Graphic Desgining</ion-select-option>
+            <ion-select-option value="Mobile App Development">Mobile App Development</ion-select-option>
+            <ion-select-option value="Web Development">Web Development</ion-select-option>
+          </ion-select>
+        </ion-item>
+      <!-- </ion-list> -->
+    </ion-col>
+    <ion-col size="12" size-md="5">
+      <!-- <ion-list class="selectlist"> -->
+        <ion-item lines="none">
+          <ion-select aria-label="Student" interface="action-sheet" placeholder="Select Student" mode="ios"
+            (ionChange)="select_status($event)">
+
+            <ion-select-option value="active">Active Student</ion-select-option>
+            <ion-select-option value="deactive">Dective Student</ion-select-option>
+            <ion-select-option value="leave">Leave Student</ion-select-option>
+          </ion-select>
+        </ion-item>
+      <!-- </ion-list> -->
+    </ion-col>
+    <ion-col size="1"></ion-col>
+
+  </ion-row>
+  <ion-list class="list">
+    <ion-button class="button1" (click)="filterdata()">Filter
+      <ion-icon name="filter-outline"></ion-icon>
+    </ion-button>
+  </ion-list>
+  <ion-card style="border-radius: 8px;" class="card-body">
+    <div class="card-body">
+
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle nowrap">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Name</th>
+              <th scope="col">Father Name</th>
+              <th scope="col">Contact No</th>
+              <th scope="col">Course</th>
+              <th scope="col">Course Duration</th>
+              <th scope="col">Student Status</th>
+              <th scope="col">Fee Status</th>
+              <th scope="col">Total Fee</th>
+              <th scope="col">Per Installment</th>
+              <th scope="col">Upcoming Installment</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of student_details ;let i=index;">
+              <th scope="row">{{ student_details.length - i }} </th>
+              <td>{{data.name}}</td>
+              <td>{{data.f_name}}</td>
+              <td>{{data.contact_no}}</td>
+              <td>{{data.course}}</td>
+              <td>{{data.c_duration}}</td>
+              <td>
+                <p [ngClass]="{'cancell':data.st_status === 'active','deactive':data.st_status === 'deactive','laeves':data.st_status === 'leave','pendingg':data.st_status === 'Cancel'}"
+                  style="margin:0px;"> {{data.st_status}}</p>
+              </td>
+              <td>
+                <p [ngClass]="{'pendingg':data.fee_status === 'pending','cancell':data.fee_status === 'confirim','successfulll':data.fee_status === 'Successfull', 'complete':data.fee_status === 'complete'}"
+                  style="margin:0px;">{{data.fee_status}}</p>
+              </td>
+              <td>{{data.total_fee}}</td>
+              <td>{{data.per_installment}}</td>
+              <td>{{data.upcoming_installment}}</td>
+              <td>
+                <ul class="list-unstyled hstack gap-1 mb-0">
+                  <li (click)="seeDeatils(data)">
+                    <a class="btn btn-sm btn-soft-primary"><ion-icon class="icon" name="eye-outline"></ion-icon></a>
+                  </li>
+                  <li (click)="view_all_installment(data)">
+                    <a class="btn btn-sm btn-soft-primary"><ion-icon class="icon" name="cash-outline"></ion-icon></a>
+                  </li>
+                  <li (click)="updateModal(data)">
+                    <a class="btn btn-sm btn-soft-info"><ion-icon class="icon" name="create-outline"></ion-icon></a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ion-card>
+
+</ion-content>

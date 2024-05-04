@@ -1,0 +1,132 @@
+ion-button {
+    --background-hover: none;
+}
+@media (min-width:1px) and (max-width:768px) {
+    .main{
+
+        margin: 5px;
+        // border: 1px solid black;
+}}
+@media (min-width:769px) {
+    .main{
+        width: 55%;
+        margin: 10px;
+        // border: 1px solid black;
+}}
+.form-control{
+    min-height: 40px;
+}
+@media (min-width:769px) {
+    .print{
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 4px;
+        margin-top: 20px;
+        text-transform: none;
+        --border-radius: 5px;
+    }
+}
+ion-avatar {
+    --border-radius: none;
+}
+.close-icon{
+    font-size: 30px;
+}
+.title{
+    --background: #222736;
+    --color: white;
+}
+.boxes{
+    border-bottom: 1px solid rgb(128, 126, 126);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    font-size: 14px;
+}
+span{
+    color: #3c4db8af;
+}
+ p{
+    margin-top: 12px;
+    font-size: 17px;
+    margin-bottom: 3px;
+}
+ion-button{
+    text-transform: none;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    width: 200px;
+}
+@media (min-width:1px) and (max-width:768px) {
+    .input{
+    height: 50px;
+    }
+}
+ion-select{
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+}
+.modalmaindiv{
+    margin-bottom: 85px;
+}
+
+// STUDENTDETAILS
+.text2{
+    margin: 0px;
+}
+.label{
+    font-size: 17px;
+    color: #222736;
+    font-weight: 600;
+}
+.date{
+    border-bottom: 1px solid #ced4da;
+}
+.close-icon{
+    margin-right: 10px;
+}
+
+
+// see installments data
+.pendingg{
+    color: white;
+    background-color: chartreuse;
+    border-radius: 5px;
+    text-align: center;
+}
+.cancell{
+    color: white;
+    background-color: red;
+    border-radius: 5px;
+    text-align: center;
+}
+.successfulll{
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+    text-align: center;
+}
+th{
+    font-family: 'poppins', sans-serif;
+}
+td{
+    font-family: 'poppins', sans-serif;
+}
+.listsee{
+    height: 10px;
+}
+.icon{
+    font-size: 19px;
+}
+
+// .form-head {
+//     background-color: white;
+//     border-radius: 10px;
+//     display: flex;
+//     align-items: center;
+// }
+.text-label{
+    padding-left: 3px;
+}

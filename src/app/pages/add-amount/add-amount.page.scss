@@ -1,0 +1,35 @@
+ion-card{
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+@media (min-width:1px) and (max-width:768px) {
+    .button2{
+        width: 30%;
+        padding-left: 4px;
+        text-transform: none;
+    }
+}
+@media (min-width:769px) {
+    .button2{
+        width: 10%;
+        padding-left: 4px;
+        text-transform: none;
+        --border-radius: 5px;
+    }
+}
+ion-select{
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    padding: 11px;
+}
+.backbtn{
+    margin-left: 10px;
+}
+.select{
+    height: 56px;
+    border: 1px solid #ced4da;
+}
+.select:hover {
+    border-color: black;
+}

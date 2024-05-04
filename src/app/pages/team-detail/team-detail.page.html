@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar style="--background: var(--ion-color-primary);">
+    <ion-buttons slot="start">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title color="light">{{this.name.name}}</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-row>
+    <ion-col size-xs="12" size-md="4">
+      <ion-card class="c3">
+        <ion-card-title class="t2">Rs.{{this.totalnetbalance}}</ion-card-title>
+        <ion-card-subtitle class="st1">Net Balance</ion-card-subtitle>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size-xs="12" size-md="4">
+      <ion-card class="c3">
+        <ion-card-title class="t2">Rs.{{this.total_credit}}</ion-card-title>
+        <ion-card-subtitle class="st1">Credit Balance</ion-card-subtitle>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size-xs="12" size-md="4">
+      <ion-card class="c3">
+        <ion-card-title class="t2">Rs.{{this.total_debit}}</ion-card-title>
+        <ion-card-subtitle class="st1">Debit Balance</ion-card-subtitle>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-card style="border-radius: 8px;" class="card-body" >
+    <div class="card-body">
+                                        
+      <div class="table-responsive">
+          <table  class="table table-bordered align-middle nowrap">
+              <thead>
+                  <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Debit</th>
+                      <th scope="col">Credit</th>
+                      <th scope="col">Net Balance</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Date</th>
+                  </tr>
+              </thead>
+    <tbody>
+
+      <tr *ngFor="let a of data ; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{a.name}}</td>
+        <td>{{a.debit}}</td>
+        <td>{{a.credit}}</td>
+        <td>{{a.net_balance}}</td>
+        <td>{{a.description}}</td>
+        <td>{{a.date}}</td>
+      
+    </tbody>
+  </table>
+</div>
+</div>
+</ion-card>
+</ion-content>
