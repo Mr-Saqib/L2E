@@ -1,15 +1,20 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar mode="ios" class="py-2 px-2  header">
-
-    <ion-searchbar slot="end" style="text-align: left;" class="searchbar" [(ngModel)]="filterTerm"
-      (ngModelChange)="searchItems(filterTerm)" type="animated"></ion-searchbar>
+  <ion-toolbar mode="ios" class="py-2 px-2 header">
+    <ion-searchbar
+      slot="end"
+      style="text-align: left"
+      class="searchbar"
+      placeholder="Search A Student"
+      [(ngModel)]="filterTerm"
+      (ngModelChange)="searchItems(filterTerm)"
+      type="animated"
+    ></ion-searchbar>
     <!-- 
     <ion-button
     style="margin-left: -50px;" fill="clear" color="light" (click)="home()" class="backbtn">
       <ion-icon name="chevron-back-outline"></ion-icon>
       Back
     </ion-button> -->
-
 
     <ion-buttons slot="start">
       <ion-menu-toggle>
@@ -18,14 +23,12 @@
     </ion-buttons>
 
     <ion-title class="pagetitle">
-      See Students
-    </ion-title>
-
+      <h1 style="margin: 0">Students Record</h1></ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
   <!-- <ion-list class="listheader2" style="margin-top: 10px;">
     <div class="">
       <ion-row> -->
@@ -51,42 +54,54 @@
   </ion-list> -->
 
   <ion-row>
-    <ion-col size-md="3" size="12">
-      <div class="form-head ion-margin ">
+    <ion-col size-md="3" size="12" class="ion-text-center">
+      <div class="form-head ion-margin">
         <div class="me-auto w-100">
           <div class="d-flex flex-column">
-            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">{{this.total.length}}</h2>
-            <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">Total Students</h2>
+            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">
+              {{this.total.length}}
+            </h2>
+            <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">
+              Total Students
+            </h2>
           </div>
         </div>
       </div>
     </ion-col>
-    <ion-col size-md="3" size="12">
-      <div class="form-head ion-margin ">
+    <ion-col size-md="3" size="12" class="ion-text-center">
+      <div class="form-head ion-margin">
         <div class="me-auto w-100">
           <div class="d-flex flex-column">
-            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">{{this.activeCounter}}</h2>
-            <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">Active Students</h2>
+            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">
+              {{this.activeCounter}} 0
+            </h2>
+            <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">
+              Active Students
+            </h2>
           </div>
         </div>
       </div>
     </ion-col>
-    <ion-col size-md="3" size="12">
-      <div class="form-head ion-margin ">
+    <ion-col size-md="3" size="12" class="ion-text-center">
+      <div class="form-head ion-margin">
         <div class="me-auto w-100">
           <div class="d-flex flex-column">
-            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">{{this.deactiveCounter}}</h2>
+            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">
+              {{this.deactiveCounter}} 0
+            </h2>
             <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">DeActive</h2>
           </div>
         </div>
       </div>
     </ion-col>
-    <ion-col size-md="3" size="12">
-      <div class="form-head ion-margin ">
+    <ion-col size-md="3" size="12" class="ion-text-center">
+      <div class="form-head ion-margin">
         <div class="me-auto w-100">
           <div class="d-flex flex-column">
-            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">{{this.leaveCounter}}</h2>
-            <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">Leave</h2>
+            <h2 class="text-black mx-3 mt-4 mb-1 font-w600 page-titles">
+              {{this.leaveCounter}} 0
+            </h2>
+            <h2 class="text-black mx-3 mb-4 mt-1 fs-5 font-w800">Left</h2>
           </div>
         </div>
       </div>
@@ -119,79 +134,207 @@
     </ion-item>
   </ion-list> -->
 
-  <ion-row>
-    <ion-col size="1"></ion-col>
-    <ion-col size="12" size-md="5">
-      <!-- <ion-list class="selectlist"> -->
-        <ion-item lines="none">
-          <ion-select aria-label="Student" interface="action-sheet" placeholder="Select Type" mode="ios"
-            (ionChange)="select_student_Course($event)">
-
-            <ion-select-option value="Full Stack Development">Full Stack Development</ion-select-option>
-            <ion-select-option value="Graphic Designing">Graphic Desgining</ion-select-option>
-            <ion-select-option value="Mobile App Development">Mobile App Development</ion-select-option>
-            <ion-select-option value="Web Development">Web Development</ion-select-option>
-          </ion-select>
-        </ion-item>
-      <!-- </ion-list> -->
-    </ion-col>
-    <ion-col size="12" size-md="5">
-      <!-- <ion-list class="selectlist"> -->
-        <ion-item lines="none">
-          <ion-select aria-label="Student" interface="action-sheet" placeholder="Select Student" mode="ios"
-            (ionChange)="select_status($event)">
-
-            <ion-select-option value="active">Active Student</ion-select-option>
-            <ion-select-option value="deactive">Dective Student</ion-select-option>
-            <ion-select-option value="leave">Leave Student</ion-select-option>
-          </ion-select>
-        </ion-item>
-      <!-- </ion-list> -->
-    </ion-col>
-    <ion-col size="1"></ion-col>
-
-  </ion-row>
   <ion-list class="list">
-    <ion-button class="button1" (click)="filterdata()">Filter
+    <ion-button class="button1" (click)="ShowList()">
+      Filter
       <ion-icon name="filter-outline"></ion-icon>
     </ion-button>
   </ion-list>
-  <ion-card style="border-radius: 8px;" class="card-body">
+  <ion-row class="ion-justify-content-center myrow1" *ngIf="showList">
+    <ion-col size="10">
+      <ion-card class="mycard1">
+        <ion-list class="mylist1">
+          <ion-row class="ion-justify-content-center">
+            <!-- <ion-col size="1"></ion-col> -->
+            <ion-col size="11" size-md="5.5">
+              <!-- <ion-list class="selectlist"> -->
+              <ion-item lines="none">
+                <ion-select
+                  aria-label="Student"
+                  interface="action-sheet"
+                  placeholder="Select Course"
+                  mode="ios"
+                  (ionChange)="select_student_Course($event)"
+                >
+                  <ion-select-option value="Full Stack Development"
+                    >Full Stack Development</ion-select-option
+                  >
+                  <ion-select-option value="Graphic Designing"
+                    >Graphic Desgining</ion-select-option
+                  >
+                  <ion-select-option value="Mobile App Development"
+                    >Mobile App Development</ion-select-option
+                  >
+                  <ion-select-option value="Web Development"
+                    >Web Development</ion-select-option
+                  >
+                </ion-select>
+              </ion-item>
+              <!-- </ion-list> -->
+            </ion-col>
+            <ion-col size="11" size-md="5.5">
+              <!-- <ion-list class="selectlist"> -->
+              <ion-item lines="none">
+                <ion-select
+                  aria-label="Student"
+                  interface="action-sheet"
+                  placeholder="Student Type"
+                  mode="ios"
+                  (ionChange)="select_status($event)"
+                >
+                  <ion-select-option value="active"
+                    >Active Student</ion-select-option
+                  >
+                  <ion-select-option value="deactive"
+                    >Dective Student</ion-select-option
+                  >
+                  <ion-select-option value="leave"
+                    >Leave Student</ion-select-option
+                  >
+                </ion-select>
+              </ion-item>
+              <!-- </ion-list> -->
+            </ion-col>
+            <!-- <ion-col size="1"></ion-col> -->
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
+            <!-- <ion-col size="1"></ion-col> -->
+            <ion-col size="11" size-md="5.5">
+              <ion-item lines="none">
+                <ion-select
+                  aria-label="Student"
+                  class="always-flip"
+                  interface="`popover"
+                  placeholder="Select Month"
+                  mode="ios"
+                >
+                  <ion-select-option value="January">
+                    January
+                  </ion-select-option>
+                  <ion-select-option value="February">
+                    February
+                  </ion-select-option>
+                  <ion-select-option value="March"> March </ion-select-option>
+                  <ion-select-option value="April">April</ion-select-option>
+                  <ion-select-option value="May">May</ion-select-option>
+                  <ion-select-option value="June">June</ion-select-option>
+                  <ion-select-option value="July">July</ion-select-option>
+                  <ion-select-option value="August">August</ion-select-option>
+                  <ion-select-option value="September"
+                    >September</ion-select-option
+                  >
+                  <ion-select-option value="October">October</ion-select-option>
+                  <ion-select-option value="November"
+                    >November</ion-select-option
+                  >
+                  <ion-select-option value="December"
+                    >December</ion-select-option
+                  >
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col size="11" size-md="5.5">
+              <ion-item class="myitem" lines="none">
+                <ion-select
+                  aria-label="Student"
+                  interface="action-sheet"
+                  placeholder="Select Year"
+                  mode="ios"
+                >
+                  <ion-select-option value="2021"> 2021 </ion-select-option>
+                  <ion-select-option value="2022"> 2022 </ion-select-option>
+                  <ion-select-option value="2023"> 2023 </ion-select-option>
+                  <ion-select-option value="2024">2024</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <!-- <ion-col size="1"></ion-col> -->
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
+            <ion-col class="ion-text-center" style="margin-bottom: 10px">
+              <!-- <ion-button>JJHGKGHF</ion-button> -->
+              <button class="shrink-border" (click)="filterdata()">
+                Filter Now
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-card style="border-radius: 8px" class="card-body">
     <div class="card-body">
-
       <div class="table-responsive">
-        <table class="table table-bordered align-middle nowrap">
+        <table
+          class="table table-bordered align-middle nowrap ion-text-center mytable1"
+        >
           <thead>
             <tr>
-              <th scope="col">No</th>
-              <th scope="col">Name</th>
-              <th scope="col">Father Name</th>
-              <th scope="col">Contact No</th>
-              <th scope="col">Course</th>
-              <th scope="col">Course Duration</th>
-              <th scope="col">Student Status</th>
-              <th scope="col">Fee Status</th>
-              <th scope="col">Total Fee</th>
-              <th scope="col">Per Installment</th>
-              <th scope="col">Upcoming Installment</th>
-              <th scope="col">Action</th>
+              <th class="myth1" scope="col">No</th>
+              <th class="myth1" scope="col">Name</th>
+              <th class="myth1" scope="col">Father Name</th>
+              <th class="myth1" scope="col">Contact No</th>
+              <th class="myth1" scope="col">Course</th>
+              <th class="myth1" scope="col">Course Duration</th>
+              <th class="myth1" scope="col">Student Status</th>
+              <th class="myth1" scope="col">Fee Status</th>
+              <th class="myth1" scope="col">Total Fee</th>
+              <th class="myth1" scope="col">Per Installment</th>
+              <th class="myth1" scope="col">Upcoming Installment</th>
+              <th class="myth1" scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>1</td>
+              <td>Usman Mehmood</td>
+              <td>Anwar Mehmood</td>
+              <td>0314-2525691</td>
+              <td>Full Stack Development</td>
+              <td>6 Months</td>
+              <td>Null</td>
+              <td>Null</td>
+              <td>75,000</td>
+              <td>30,000</td>
+              <td>25,000</td>
+              <td>Null</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Anwar Mumtaz</td>
+              <td>Hamza Ali</td>
+              <td>0314-2525691</td>
+              <td>Full Stack Development</td>
+              <td>6 Months</td>
+              <td>Null</td>
+              <td>Null</td>
+              <td>75,000</td>
+              <td>30,000</td>
+              <td>25,000</td>
+              <td>Null</td>
+            </tr>
             <tr *ngFor="let data of student_details ;let i=index;">
-              <th scope="row">{{ student_details.length - i }} </th>
+              <th scope="row">{{ student_details.length - i }}</th>
               <td>{{data.name}}</td>
               <td>{{data.f_name}}</td>
               <td>{{data.contact_no}}</td>
               <td>{{data.course}}</td>
               <td>{{data.c_duration}}</td>
               <td>
-                <p [ngClass]="{'cancell':data.st_status === 'active','deactive':data.st_status === 'deactive','laeves':data.st_status === 'leave','pendingg':data.st_status === 'Cancel'}"
-                  style="margin:0px;"> {{data.st_status}}</p>
+                <p
+                  [ngClass]="{'cancell':data.st_status === 'active','deactive':data.st_status === 'deactive','laeves':data.st_status === 'leave','pendingg':data.st_status === 'Cancel'}"
+                  style="margin: 0px"
+                >
+                  {{data.st_status}}
+                </p>
               </td>
               <td>
-                <p [ngClass]="{'pendingg':data.fee_status === 'pending','cancell':data.fee_status === 'confirim','successfulll':data.fee_status === 'Successfull', 'complete':data.fee_status === 'complete'}"
-                  style="margin:0px;">{{data.fee_status}}</p>
+                <p
+                  [ngClass]="{'pendingg':data.fee_status === 'pending','cancell':data.fee_status === 'confirim','successfulll':data.fee_status === 'Successfull', 'complete':data.fee_status === 'complete'}"
+                  style="margin: 0px"
+                >
+                  {{data.fee_status}}
+                </p>
               </td>
               <td>{{data.total_fee}}</td>
               <td>{{data.per_installment}}</td>
@@ -199,13 +342,19 @@
               <td>
                 <ul class="list-unstyled hstack gap-1 mb-0">
                   <li (click)="seeDeatils(data)">
-                    <a class="btn btn-sm btn-soft-primary"><ion-icon class="icon" name="eye-outline"></ion-icon></a>
+                    <a class="btn btn-sm btn-soft-primary"
+                      ><ion-icon class="icon" name="eye-outline"></ion-icon
+                    ></a>
                   </li>
                   <li (click)="view_all_installment(data)">
-                    <a class="btn btn-sm btn-soft-primary"><ion-icon class="icon" name="cash-outline"></ion-icon></a>
+                    <a class="btn btn-sm btn-soft-primary"
+                      ><ion-icon class="icon" name="cash-outline"></ion-icon
+                    ></a>
                   </li>
                   <li (click)="updateModal(data)">
-                    <a class="btn btn-sm btn-soft-info"><ion-icon class="icon" name="create-outline"></ion-icon></a>
+                    <a class="btn btn-sm btn-soft-info"
+                      ><ion-icon class="icon" name="create-outline"></ion-icon
+                    ></a>
                   </li>
                 </ul>
               </td>
@@ -215,5 +364,4 @@
       </div>
     </div>
   </ion-card>
-
 </ion-content>
