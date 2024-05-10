@@ -1,7 +1,6 @@
 ion-select {
   border: 1px solid #ced4da;
-  border-radius: 0.375rem;
-  padding: 9px;
+  border-radius: 5px;
 }
 ion-input {
   color: #020101;
@@ -31,7 +30,7 @@ ion-select {
   justify-content: center;
   padding: 0;
   text-indent: 15px;
-  height: 8vh;
+  height: 9.2vh;
 }
 
 .grid2 {
@@ -56,5 +55,14 @@ ion-select {
       justify-content: center;
       padding-right: 1vw;
     }
+  }
+}
+.btnn {
+  background-color: #222736;
+  color: white;
+  cursor: pointer;
+  padding: 2vh;
+  &:hover {
+    background-color: #222736e8;
   }
 }
