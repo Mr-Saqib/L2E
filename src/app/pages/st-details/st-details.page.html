@@ -23,7 +23,7 @@
     </ion-buttons>
 
     <ion-title class="pagetitle">
-      <h1 style="margin: 0">Students Record</h1></ion-title
+      <h1 style="margin: 0">Student's Record</h1></ion-title
     >
   </ion-toolbar>
 </ion-header>
@@ -135,7 +135,11 @@
   </ion-list> -->
 
   <ion-list class="list">
-    <ion-button class="button1" (click)="ShowList()">
+    <ion-button
+      class="button1"
+      style="margin-bottom: 15px"
+      (click)="ShowList()"
+    >
       Filter
       <ion-icon name="filter-outline"></ion-icon>
     </ion-button>
@@ -262,7 +266,7 @@
       </ion-card>
     </ion-col>
   </ion-row>
-  <ion-card style="border-radius: 8px" class="card-body">
+  <ion-card style="border-radius: 8px; margin-bottom: 20px" class="card-body">
     <div class="card-body">
       <div class="table-responsive">
         <table
@@ -300,7 +304,7 @@
               <td>Null</td>
             </tr>
             <tr>
-              <td>1</td>
+              <td>2</td>
               <td>Anwar Mumtaz</td>
               <td>Hamza Ali</td>
               <td>0314-2525691</td>

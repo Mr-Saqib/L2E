@@ -11,19 +11,47 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./st-adm.page.scss'],
 })
 export class StAdmPage implements OnInit {
-
   data: any;
   Submit: any;
   user: any;
   public end_date1: any;
 
-  constructor(public route: Router, public apiCall: ApiService, public gloabl: GlobalService, public authser: AuthService , public alertController: AlertController) { }
+  constructor(
+    public route: Router,
+    public apiCall: ApiService,
+    public gloabl: GlobalService,
+    public authser: AuthService,
+    public alertController: AlertController
+  ) {}
 
-  public student_data: any = { c_id: 1, a_id: '', name: '', f_name: '', st_gender: '', contact_no: '', address: '', reference: '', cnic: '', course: '', c_duration: '', upcoming_installment: '', ad_date: '', total_fee: '', per_installment: '', total_installments: '', remaning_amount: '', status: '', st_status: '', fee_status: '', end_date: '', rg_fee: '',installments:[] }
+  public student_data: any = {
+    c_id: 1,
+    a_id: '',
+    name: '',
+    f_name: '',
+    st_gender: '',
+    contact_no: '',
+    address: '',
+    reference: '',
+    cnic: '',
+    course: '',
+    c_duration: '',
+    upcoming_installment: '',
+    ad_date: '',
+    total_fee: '',
+    per_installment: '',
+    total_installments: '',
+    remaning_amount: '',
+    status: '',
+    st_status: '',
+    fee_status: '',
+    end_date: '',
+    rg_fee: '',
+    installments: [],
+  };
+
   ngOnInit() {
-
-    this.gloabl.Userlogin.subscribe(res => {
-
+    this.gloabl.Userlogin.subscribe((res) => {
       this.data = res.user;
       // if (this.data === undefined) {
       //   this.route.navigate(['/login'])
@@ -33,7 +61,6 @@ export class StAdmPage implements OnInit {
       //   // this.apiCall.GetStudents(this.data.c_id)
       // }
     });
-
   }
 
   installment($event: any) {
@@ -43,59 +70,91 @@ export class StAdmPage implements OnInit {
   }
 
   perinstallment($event: any) {
-    const nameMonth = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const nameMonth = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
     const getCourseMonth = $event.target.value;
     console.log(getCourseMonth, 'duration');
     const d = new Date();
-    let currentMonth = d.getMonth()+1;
+    let currentMonth = d.getMonth() + 1;
     let currentYear = d.getFullYear();
     console.log(currentMonth, 'current');
 
     this.student_data.installments = [];
-    this.student_data.installments = this.generateInstallmentDates(d,this.student_data.total_installments);
-    
+    this.student_data.installments = this.generateInstallmentDates(
+      d,
+      this.student_data.total_installments
+    );
 
     console.log($event.target.value);
-    this.student_data.per_installment = (this.student_data.total_fee / this.student_data.total_installments).toFixed(0);
+    this.student_data.per_installment = (
+      this.student_data.total_fee / this.student_data.total_installments
+    ).toFixed(0);
   }
-  public generateInstallmentDates(startDate: any | Date, numberOfMonths: number):any {
+
+  public generateInstallmentDates(
+    startDate: any | Date,
+    numberOfMonths: number
+  ): any {
     const installmentDates = [];
     let installment_no = 0;
     for (let i = 0; i < numberOfMonths; i++) {
       const date = new Date(startDate);
       date.setMonth(startDate.getMonth() + i);
       const formattedDate = this.formatDate(date);
-      console.log(installment_no++)
-      installmentDates.push({ date:formattedDate, status: 'pending',installment_no: installment_no});
-
+      console.log(installment_no++);
+      installmentDates.push({
+        date: formattedDate,
+        status: 'pending',
+        installment_no: installment_no,
+      });
     }
-    console.log(installmentDates)
-    
+    console.log(installmentDates);
+
     return installmentDates;
   }
-  public formatDate(date: { getDate: () => any; getMonth: () => number; getFullYear: () => any; }) {
+
+  public formatDate(date: {
+    getDate: () => any;
+    getMonth: () => number;
+    getFullYear: () => any;
+  }) {
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     return `${day}-${month}-${year}`;
   }
-  
-  month($event:any) {
+
+  month($event: any) {
     this.student_data.installments = [];
-    this.student_data.installments = this.generateInstallmentDates($event.target.value,this.student_data.total_installments);
+    this.student_data.installments = this.generateInstallmentDates(
+      $event.target.value,
+      this.student_data.total_installments
+    );
     console.log($event.target.value);
 
     // Get the current date
     var now = new Date();
     if (now.getMonth() == 11) {
-      var c  = new Date(now.getFullYear() + 1, 0, 1);
+      var c = new Date(now.getFullYear() + 1, 0, 1);
       this.student_data.upcoming_installment = format(c, 'yyyy-MM-dd');
     } else {
-      var c  = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+      var c = new Date(now.getFullYear(), now.getMonth() + 1, 1);
       this.student_data.upcoming_installment = format(c, 'yyyy-MM-dd');
     }
 
-    console.log(this.student_data.upcoming_installment)
+    console.log(this.student_data.upcoming_installment);
     this.student_data.a_month = format(parseISO($event.target.value), 'MMMM');
     console.log(this.student_data.a_month);
   }
@@ -113,7 +172,6 @@ export class StAdmPage implements OnInit {
       return 0;
     }
   }
-
 
   // handleCourseDurationChange(event: any) {
   //   const selectedDuration = event.detail.value;
@@ -137,12 +195,11 @@ export class StAdmPage implements OnInit {
   }
 
   home() {
-    this.route.navigate(['home'])
+    this.route.navigate(['home']);
   }
   add_student() {
-    this.route.navigate(['st-adm'])
+    this.route.navigate(['st-adm']);
   }
-
 
   year($event: any) {
     console.log($event.target.value);
@@ -162,7 +219,6 @@ export class StAdmPage implements OnInit {
       // You can customize this based on your requirements
       this.student_data.upcoming_installment = ''; // Set an appropriate value for the past year
     }
-
   }
   async Submit_Data() {
     this.student_data.c_id = this.data.c_id;
@@ -171,19 +227,43 @@ export class StAdmPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Are You Sure',
       message: 'DO You Want To Add Student.',
-      buttons: [{
-        text: 'Okay',
-        handler: async () => {
-          console.log(this.student_data)
-     await this.apiCall.AddStudents(this.student_data);
-    this.student_data = { a_id: '', name: '', f_name: '', st_gender: '', contact_no: '', address: '', reference: '', cnic: '', course: '', c_duration: '', upcoming_installment: '', ad_date: '', total_fee: '', per_installment: '', total_installments: '', advance: '', remaning_amount: '', status: '', st_status: '', fee_status: '', rg_fee: '' }
-    this.route.navigate(['st-details']);
-    },
-    }]
-     
+      buttons: [
+        {
+          text: 'Okay',
+          handler: async () => {
+            console.log(this.student_data);
+            await this.apiCall.AddStudents(this.student_data);
+            this.student_data = {
+              a_id: '',
+              name: '',
+              f_name: '',
+              st_gender: '',
+              contact_no: '',
+              address: '',
+              reference: '',
+              cnic: '',
+              course: '',
+              c_duration: '',
+              upcoming_installment: '',
+              ad_date: '',
+              total_fee: '',
+              per_installment: '',
+              total_installments: '',
+              advance: '',
+              remaning_amount: '',
+              status: '',
+              st_status: '',
+              fee_status: '',
+              rg_fee: '',
+            };
+            this.route.navigate(['st-details']);
+          },
+        },
+      ],
     });
 
     await alert.present();
-
   }
+
+  //===========================================================.MY TS.================================================================
 }
