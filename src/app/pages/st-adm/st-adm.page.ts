@@ -51,7 +51,7 @@ export class StAdmPage implements OnInit {
   };
 
   ngOnInit() {
-    this.gloabl.Userlogin.subscribe((res) => {
+    this.gloabl.Userlogin.subscribe((res: any) => {
       this.data = res.user;
       // if (this.data === undefined) {
       //   this.route.navigate(['/login'])
