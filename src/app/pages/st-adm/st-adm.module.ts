@@ -9,12 +9,7 @@ import { StAdmPageRoutingModule } from './st-adm-routing.module';
 import { StAdmPage } from './st-adm.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    StAdmPageRoutingModule
-  ],
-  declarations: [StAdmPage]
+  imports: [CommonModule, FormsModule, IonicModule, StAdmPageRoutingModule],
+  declarations: [StAdmPage],
 })
 export class StAdmPageModule {}

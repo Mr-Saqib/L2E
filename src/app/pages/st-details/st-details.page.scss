@@ -294,3 +294,18 @@ button {
   //   flex-direction: column;
   align-items: center;
 }
+
+ion-content {
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    // display: none;
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 9px;
+    background-color: #222736;
+    // background-image: linear-gradient(90deg, #4a926e, #19804c);
+  }
+}

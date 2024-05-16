@@ -1,8 +1,7 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar mode="ios" class="py-2 px-2  header">
-
+  <ion-toolbar mode="ios" class="py-2 px-2 header">
     <!-- <ion-searchbar  slot="end" style="text-align: left;" class="searchbar"  type="animated"></ion-searchbar> -->
-<!-- 
+    <!-- 
     <ion-button style="margin-left: -50px;" fill="clear" color="light" (click)="home()" class="backbtn">
       <ion-icon name="chevron-back-outline" (click)="home()"></ion-icon>
       Back
@@ -14,14 +13,10 @@
       </ion-menu-button>
     </ion-buttons>
 
-    <ion-title class="pagetitle">
-     Add Students
-    </ion-title>
-  
+    <ion-title class="pagetitle"> Add Students </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
   <!-- <ion-list class="listheader3" style="margin-top: 10px;">
     <div class="">
       <ion-row>
@@ -37,128 +32,257 @@
     </div>
   </ion-list> -->
 
-<ion-card >
-<ion-row>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="label1">Student Name</label>
-      <ion-input class="input" type="text"  [(ngModel)]="student_data.name" fill="outline" placeholder="Enter Father Name" fill="outline"></ion-input>
-    </div>
-  </ion-col>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="text-label label1">Student Gender</label>
-      <!-- <ion-select [(ngModel)]="student_data.st_gender" mode="ios" interface="action-sheet" placeholder="Select course" style="height: 55px; padding-bottom: 10px;">
-  <ion-select-option value="Male">Male</ion-select-option>
-  <ion-select-option value="Female">Female</ion-select-option>
-</ion-select> -->
-<select class="form-select select" aria-label="Select Gender" style="height: 56px;" [(ngModel)]="student_data.st_gender">
-  <option value="" disabled selected>Select Gender</option>
-  <option value="Male">Male</option>
-  <option value="Female">Female</option>
-</select>
-    </div>
-  </ion-col>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="label1">Father Name</label>
-      <ion-input class="input" type="text"  [(ngModel)]="student_data.f_name" fill="outline" placeholder="Enter Father Name" fill="outline"></ion-input>
-    </div>
-  </ion-col>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="label1">Contact number</label>
-      <ion-input class="input" type="text"  placeholder="Enter Contact number"type="number" [(ngModel)]="student_data.contact_no" fill="outline"></ion-input>
-    </div>
-  </ion-col>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="label1">Address</label>
-      <ion-input class="input" type="text"  placeholder="Enter Address" [(ngModel)]="student_data.address" fill="outline"></ion-input>
-    </div>
-  </ion-col>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="label1">Qualification</label>
-      <ion-input class="input" type="text" [(ngModel)]="student_data.reference"  placeholder="Enter Qualification" fill="outline"></ion-input>
-    </div>
-  </ion-col>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="label1">CNIC</label>
-          <ion-input class="input"  type="number" [(ngModel)]="student_data.cnic" placeholder="Enter CNIC" fill="outline"></ion-input>
-    </div>
-  </ion-col>
-  
-<ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="text-label label1">Course</label>
-      <select placeholder="Search" class="form-select form-select-lg mb-3 select" style="height: 56px;" aria-label="Select Course" [(ngModel)]="student_data.course">
-        <option value="" disabled selected>Select Course</option>
-        <option value="Full Stack Development">Full Stack Development</option>
-        <option value="Web Development">Web Development</option>
-        <option value="Mobile App Development">Mobile App Development</option>
-        <option value="Graphic Designing">Graphic Designing</option>
-      </select>
-    </div>
-  </ion-col>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="text-label label1">Course Duration</label>
-  
-<select class="form-select form-select-lg mb-3 select" aria-label="Select Course duration"  [(ngModel)]="student_data.c_duration">
-  <option value="" disabled selected>Select course duration</option>
-  <option value="1 Month">1 Month</option>
-  <option value="2 Month">2 Month</option>
-  <option value="3 Month">3 Month</option>
-  <option value="6 Month">6 Month</option>
-</select>
-    </div>
-  </ion-col>
+  <ion-card>
+    <ion-row>
+      <!-- 1 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">Student Name</label>
+          <ion-input
+            class="input"
+            type="text"
+            [(ngModel)]="student_data.name"
+            fill="outline"
+            placeholder="Enter Student Name"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <!-- 2 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">Father Name</label>
+          <ion-input
+            class="input"
+            type="text"
+            [(ngModel)]="student_data.f_name"
+            fill="outline"
+            placeholder="Enter Father Name"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <!-- 3 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">Contact Number</label>
+          <ion-input
+            class="input"
+            type="text"
+            placeholder="Enter Contact number"
+            type="number"
+            [(ngModel)]="student_data.contact_no"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <!-- 4 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">Father Contact Number</label>
+          <ion-input
+            class="input"
+            type="text"
+            placeholder="Enter Father Contact number"
+            type="number"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <!-- 5 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">Qualification</label>
+          <ion-input
+            class="input"
+            type="text"
+            [(ngModel)]="student_data.reference"
+            placeholder="Enter Qualification"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <!-- 6 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">Address</label>
+          <ion-input
+            class="input"
+            type="text"
+            placeholder="Enter Address"
+            [(ngModel)]="student_data.address"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <!-- 7 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="text-label label1">Student Gender</label>
+          <!-- <ion-select
+            [(ngModel)]="student_data.st_gender"
+            mode="ios"
+            interface="action-sheet"
+            placeholder="Select course"
+            style="height: 55px; padding-bottom: 10px"
+          >
+            <ion-select-option value="Male">Male</ion-select-option>
+            <ion-select-option value="Female">Female</ion-select-option>
+          </ion-select> -->
+          <select
+            class="form-select select"
+            aria-label="Select Gender"
+            style="height: 56px"
+            [(ngModel)]="student_data.st_gender"
+          >
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+      </ion-col>
+      <!-- 8 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">CNIC</label>
+          <ion-input
+            class="input"
+            type="number"
+            [(ngModel)]="student_data.cnic"
+            placeholder="Enter CNIC (Optional)"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <!-- 9 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="text-label label1">Course</label>
+          <select
+            placeholder="Search"
+            class="form-select form-select-lg mb-3 select"
+            style="height: 56px"
+            aria-label="Select Course"
+            [(ngModel)]="student_data.course"
+          >
+            <option value="" disabled selected>Select Course</option>
+            <option value="Full Stack Development">
+              Full Stack Development
+            </option>
+            <option value="Web Development">Web Development</option>
+            <option value="Mobile App Development">
+              Mobile App Development
+            </option>
+            <option value="Graphic Designing">Graphic Designing</option>
+          </select>
+        </div>
+      </ion-col>
+      <!-- 10 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="text-label label1">Course Duration</label>
 
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="label1">Addmission Date</label>
-      <ion-input class="date selector" type="date"  [(ngModel)]="student_data.ad_date" (ionChange)="month($event)" required placeholder="Enter Addmission Date"></ion-input>
-    </div>
-  </ion-col>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="label1">Total Fee</label>
-        <ion-input class="input" type="number"  [(ngModel)]="student_data.total_fee" (ngModelChange)="updateRemainingFee()" placeholder="Enter Total Fee" fill="outline"></ion-input>
-    </div>
-  </ion-col>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="label1">Total Installments</label>
-      <ion-input class="input"  type="number"  [(ngModel)]="student_data.total_installments" (ionInput)="perinstallment($event)" placeholder="Enter Total Installmemts" fill="outline"></ion-input>
-    </div>
-  </ion-col>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="label1">Per Installment</label>
-      <ion-input class="input" type="text" type="number"  fill="outline" [(ngModel)]="student_data.per_installment" (Change)="installment($event)" placeholder="Enter student name" fill="outline"></ion-input>
-    </div> 
-  </ion-col>
-  <ion-col size-lg="6" size-md="6"  size="12">
-    <div class="mb-2 form-group">
-      <label class="label1">Registration Fee</label>
-      <ion-input class="input" type="text" type="number"  [(ngModel)]="student_data.rg_fee" placeholder="Enter student name" fill="outline"></ion-input>
-    </div>
-  </ion-col>
-  </ion-row>
-  <ion-button expand="block" color="dark" class="button2" [disabled]="student_data.name ==='' || 
+          <select
+            class="form-select form-select-lg mb-3 select"
+            aria-label="Select Course duration"
+            [(ngModel)]="student_data.c_duration"
+          >
+            <option value="" disabled selected>Select course duration</option>
+            <option value="1 Month">1 Month</option>
+            <option value="2 Month">2 Month</option>
+            <option value="3 Month">3 Month</option>
+            <option value="6 Month">6 Month</option>
+          </select>
+        </div>
+      </ion-col>
+      <!-- 11 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">Total Fee</label>
+          <ion-input
+            class="input"
+            type="number"
+            [(ngModel)]="student_data.total_fee"
+            (ngModelChange)="updateRemainingFee()"
+            placeholder="Enter Total Fee"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <!-- 12 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">Total Installments</label>
+          <ion-input
+            class="input"
+            type="number"
+            placeholder="Enter Total Installments"
+            fill="outline"
+          ></ion-input>
+          <!-- [(ngModel)]="student_data.total_installments"
+            (ionInput)="perinstallment($event)" -->
+        </div>
+      </ion-col>
+      <!-- 13 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">Per Installment</label>
+          <ion-input
+            class="input"
+            type="text"
+            type="number"
+            fill="outline"
+            [(ngModel)]="student_data.per_installment"
+            (Change)="installment($event)"
+            placeholder="Enter Per Installment Amount"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <!-- 14 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">Registration Fee</label>
+          <ion-input
+            class="input"
+            type="text"
+            type="number"
+            [(ngModel)]="student_data.rg_fee"
+            placeholder="Enter The Amount"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <!-- 15 -->
+      <ion-col size-lg="6" size-md="6" size="12">
+        <div class="mb-2 form-group">
+          <label class="label1">Admission Date</label>
+          <ion-input
+            class="date selector"
+            type="date"
+            [(ngModel)]="student_data.ad_date"
+            (ionChange)="month($event)"
+            required
+            placeholder="Enter Admission Date"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-button
+      expand="block"
+      color="dark"
+      class="button2"
+      (click)="Submit_Data()"
+      >Submit</ion-button
+    >
+    <!-- [disabled]="student_data.name ==='' || 
 student_data.f_name ==='' || student_data.st_gender ==='' || 
 student_data.contact_no ==='' || student_data.address ==='' ||
  student_data.reference ==='' || student_data.cnic ==='' || 
  student_data.course ===''|| student_data.c_duration ==='' ||
  student_data.total_fee ===''|| student_data.per_installment ==='' || 
- student_data.total_installments ===''|| student_data.remaning_amount ==='' ||student_data.rg_fee ===''"
-(click)="Submit_Data()">Submit</ion-button>
-<!-- <ion-button expand="block" color="dark" class="button2" 
+ student_data.total_installments ===''|| student_data.remaning_amount ==='' ||student_data.rg_fee ===''" -->
+    <!-- <ion-button expand="block" color="dark" class="button2" 
 (click)="Submit_Data()">Submit</ion-button>  -->
-</ion-card>
-
-
-
-</ion-content> 
+  </ion-card>
+</ion-content>
